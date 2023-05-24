@@ -13,7 +13,7 @@ function newGame() {
     gameOver = false;
 }
 
-function play() {
+async function play() {
     if(gameOver) newGame();
 
     score++;
@@ -23,8 +23,16 @@ function play() {
     let computerChoice = Math.floor(Math.random() * 3);
 
     let image = computerChoice == 0?"rock":computerChoice==1?"paper":"scissor";
-    document.getElementById('computerChoice').innerHTML = `<img src="assets/img/${image}.png">`;
-    // document.getElementById('computer').innerHTML = "Computer: " + (computerChoice === 0?"Rock":computerChoice===1?"Paper":"Scissor");
+    
+    // shuffle animation
+    let steps = 0, totalSteps = 10 + computerChoice, slide = 0;
+    while(steps++ < totalSteps) {
+        let image = slide == 0?"rock":slide==1?"paper":"scissor";
+        slide = (slide + 1) % 3;
+        document.getElementById('computerChoice').innerHTML = `<img src="assets/img/${image}.png">`;
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
+
     let won;
     
     if((computerChoice - playerChoice + 3) % 3 === 1) { // player has lost
@@ -47,9 +55,9 @@ function play() {
 
     if(gameOver) {
         if(won === "player") {
-            alert("You have won");
+            alert("You won");
         } else {
-            alert("You have lost");
+            alert("You lost");
         }
     }
 }
