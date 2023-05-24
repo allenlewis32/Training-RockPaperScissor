@@ -39,6 +39,7 @@ html, body {
 
 .score {
     border: 2px solid;
+    border-top: none;
     font-size: larger;
     padding: 5px;
 }
