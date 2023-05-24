@@ -4,8 +4,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rock Paper Scissor</title>
         <link rel="stylesheet" href="assets/style.css">
-    </head>
-    <body>
         <script src="assets/script.js"></script>
+    </head>
+    <body onload="newGame()">
+        Computer: <div id="computer"></div><br>
+        <div id="player">
+            <form name="playerForm">
+                <input type="radio" name="choice" value="0">Rock
+                <input type="radio" name="choice" value="1">Paper
+                <input type="radio" name="choice" value="2">Scissor
+                <button type="button" onclick="play()">Play</button>
+            </form>
+        </div>
+        Score: <div id="score">0</div>
+        Player's High Score: <div id="playerHighScore">0</div>
+        Computer's High Score: <div id="computerHighScore">0</div>
     </body>
 </html>
