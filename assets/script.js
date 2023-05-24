@@ -1,7 +1,7 @@
-let score;
+let computerScore, playerScore;
 
-let playerHighScore = 0;
-let computerHighScore = 0;
+let playerNumWins = 0;
+let computerNumWins = 0;
 
 let gameOver = true;
 
@@ -22,10 +22,8 @@ async function play() {
     let playerChoice = document.playerForm.choice.value;
     let computerChoice = Math.floor(Math.random() * 3);
 
-    let image = computerChoice == 0?"rock":computerChoice==1?"paper":"scissor";
-    
     // shuffle animation
-    let steps = 0, totalSteps = 10 + computerChoice, slide = 0;
+    let steps = 0, totalSteps = 4 + computerChoice, slide = 0;
     while(steps++ < totalSteps) {
         let image = slide == 0?"rock":slide==1?"paper":"scissor";
         slide = (slide + 1) % 3;
@@ -33,31 +31,24 @@ async function play() {
         await new Promise(resolve => setTimeout(resolve, 100));
     }
 
-    let won;
-    
     if((computerChoice - playerChoice + 3) % 3 === 1) { // player has lost
-        gameOver = true;
-        if(computerHighScore < score) {
-            computerHighScore = score;
-        }
-        won = "computer";
+        computerScore++;
     } else if((playerChoice - computerChoice + 3) % 3 === 1) { // computer has lost
-        gameOver = true;
-        if(playerHighScore < score) {
-            playerHighScore = score;
-        }
-        won = "player";
-    } else {
+        playerScore++;
     }
-    document.getElementById('score').innerHTML = "Score: " + score;
-    document.getElementById('playerHighScore').innerHTML = "Player: " + playerHighScore;
-    document.getElementById('computerHighScore').innerHTML = "Computer: " + computerHighScore;
-
-    if(gameOver) {
-        if(won === "player") {
+    document.getElementById('playerScore').innerHTML = "Player Score: " + playerScore;
+    document.getElementById('computerScore').innerHTML = "Computer Score: " + computerScore;
+    
+    if(computerScore === 10 || playerScore === 10) {
+        gameOver = true;
+        if(playerScore === 10) {
+            playerNumWins++;
             alert("You won");
         } else {
+            computerNumWins++;
             alert("You lost");
         }
     }
+    document.getElementById('playerNumWins').innerHTML = "Number of wins(player): " + playerNumWins;
+    document.getElementById('computerNumWins').innerHTML = "Number of wins(computer): " + computerNumWins;
 }
