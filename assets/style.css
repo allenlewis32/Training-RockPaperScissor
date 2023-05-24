@@ -1,0 +1,71 @@
+.main {
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    border: 5px;
+}
+
+.container {
+    height: 75vh;
+}
+
+html, body {
+    height: 100vh;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+#computer {
+    float: left;
+    border: 2px solid;
+    width: 20vw;
+    text-align: center;
+}
+
+#player {
+    float: right;
+    border: 2px solid;
+    border-left: none;
+    width: 60vw;
+    text-align: center;
+}
+
+.score {
+    border: 2px solid;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] + img {
+    cursor: pointer;
+}
+
+input[type="radio"]:checked + img {
+    outline: 5px solid #000;
+}
+
+img {
+    height: 300px;
+    margin: 10px;
+    outline: 2px solid #000;
+}
+
+button {
+    width: fit-content;
+    align-self: center;
+    margin-top: 10px;
+    font-size: larger;
+}
+
+h1 {
+    text-align: center;
+}

@@ -22,7 +22,9 @@ function play() {
     let playerChoice = document.playerForm.choice.value;
     let computerChoice = Math.floor(Math.random() * 3);
 
-    document.getElementById('computer').innerHTML = computerChoice === 0?"Rock":computerChoice===1?"Paper":"Scissor";
+    let image = computerChoice == 0?"rock":computerChoice==1?"paper":"scissor";
+    document.getElementById('computerChoice').innerHTML = `<img src="assets/img/${image}.png">`;
+    // document.getElementById('computer').innerHTML = "Computer: " + (computerChoice === 0?"Rock":computerChoice===1?"Paper":"Scissor");
     let won;
     
     if((computerChoice - playerChoice + 3) % 3 === 1) { // player has lost
@@ -39,9 +41,9 @@ function play() {
         won = "player";
     } else {
     }
-    document.getElementById('score').innerHTML = score;
-    document.getElementById('playerHighScore').innerHTML = playerHighScore;
-    document.getElementById('computerHighScore').innerHTML = computerHighScore;
+    document.getElementById('score').innerHTML = "Score: " + score;
+    document.getElementById('playerHighScore').innerHTML = "Player: " + playerHighScore;
+    document.getElementById('computerHighScore').innerHTML = "Computer: " + computerHighScore;
 
     if(gameOver) {
         if(won === "player") {

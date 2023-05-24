@@ -7,17 +7,38 @@
         <script src="assets/script.js"></script>
     </head>
     <body onload="newGame()">
-        Computer: <div id="computer"></div><br>
-        <div id="player">
-            <form name="playerForm">
-                <input type="radio" name="choice" value="0">Rock
-                <input type="radio" name="choice" value="1">Paper
-                <input type="radio" name="choice" value="2">Scissor
+        <div class="main row">
+            <div class="container col">
+                <div class="row">
+                    <div id="computer">
+                        <h1>Computer</h1>
+                        <div id="computerChoice"></div>
+                    </div>
+                    <div id="player">
+                        <h1>Player</h1>
+                        <form name="playerForm">
+                            <label>
+                                <input type="radio" name="choice" value="0" checked>
+                                <img src="assets/img/rock.png">
+                            </label>
+                            <label>
+                                <input type="radio" name="choice" value="1">
+                                <img src="assets/img/paper.png">
+                            </label>
+                            <label>
+                                <input type="radio" name="choice" value="2">
+                                <img src="assets/img/scissor.png">
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div class="score col">
+                    <div id="score">Score:</div>
+                    <div id="playerHighScore">Player's High Score:</div>
+                    <div id="computerHighScore">Computer's High Score:</div>
+                </div>
                 <button type="button" onclick="play()">Play</button>
-            </form>
+            </div>
         </div>
-        Score: <div id="score">0</div>
-        Player's High Score: <div id="playerHighScore">0</div>
-        Computer's High Score: <div id="computerHighScore">0</div>
     </body>
 </html>
